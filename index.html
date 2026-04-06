@@ -91,13 +91,22 @@ section{padding:100px 0}
 .portfolio-info p{color:var(--text-muted);font-size:0.85rem}
 
 /* Pricing */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:1100px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;padding:20px;cursor:pointer}
+.lightbox.active{display:flex}
+.lightbox img{max-width:95%;max-height:95vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,0.6)}
+.lightbox-close{position:absolute;top:20px;right:30px;font-size:40px;color:#fff;cursor:pointer;background:none;border:none;line-height:1}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:30px;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.lightbox-nav:hover{background:rgba(255,255,255,0.2)}
+.lightbox-prev{left:30px}
+.lightbox-next{right:30px}
 .price-card{background:var(--bg2);border-radius:20px;padding:36px;border:1px solid rgba(255,255,255,0.05);transition:all 0.4s;position:relative}
 .price-card:hover{border-color:rgba(99,102,241,0.3)}
 .price-card.popular{border-color:var(--primary);background:linear-gradient(145deg,rgba(99,102,241,0.1),var(--bg2))}
 .price-card.popular::before{content:'Популярный';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gradient);color:var(--white);padding:4px 20px;border-radius:50px;font-size:0.8rem;font-weight:600}
 .price-name{font-size:1.1rem;color:var(--text-muted);margin-bottom:8px}
-.price-amount{font-size:2.8rem;font-weight:800;margin-bottom:4px}
+.price-amount{font-size:2.4rem;font-weight:800;margin-bottom:4px;white-space:nowrap}
 .price-amount span{font-size:1rem;color:var(--text-muted);font-weight:400}
 .price-desc{color:var(--text-muted);font-size:0.9rem;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.05)}
 .price-features{list-style:none;margin-bottom:32px}
@@ -162,6 +171,9 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
   .stats-inner{grid-template-columns:repeat(2,1fr)}
   .portfolio-grid{grid-template-columns:1fr 1fr}
   .pricing-grid{grid-template-columns:1fr}
+  .lightbox-nav{width:40px;height:40px;font-size:24px}
+  .lightbox-prev{left:10px}
+  .lightbox-next{right:10px}
   .process-grid{grid-template-columns:1fr 1fr}
   .contact-grid{grid-template-columns:1fr}
   .quiz-options{grid-template-columns:1fr}
@@ -203,29 +215,45 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
     <div class="hero-visual">
       <div class="carousel-track">
         <div class="carousel-col">
-          <div class="hero-logo-card"><img src="img/portfolio/logo1.png" alt="Brew Lab"></div>
-          <div class="hero-logo-card"><img src="img/portfolio/logo4.png" alt="KidsBrain"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-01.jpg" alt="Doctor Online"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-04.jpg" alt="Logo 4"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-07.jpg" alt="Logo 7"></div>
         </div>
         <div class="carousel-col">
-          <div class="hero-logo-card"><img src="img/portfolio/logo2.png" alt="NexaFlow"></div>
-          <div class="hero-logo-card"><img src="img/portfolio/logo5.png" alt="Shield Partners"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-02.jpg" alt="Recargo"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-05.jpg" alt="Logo 5"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-08.jpg" alt="Logo 8"></div>
         </div>
         <div class="carousel-col">
-          <div class="hero-logo-card"><img src="img/portfolio/logo3.png" alt="Aurum"></div>
-          <div class="hero-logo-card"><img src="img/portfolio/logo6.png" alt="GreenLeaf"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-03.jpg" alt="Logo 3"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-06.jpg" alt="Logo 6"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-09.jpg" alt="Logo 9"></div>
+        </div>
+        <div class="carousel-col">
+          <div class="hero-logo-card"><img src="img/logos/logo-10.jpg" alt="Logo 10"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-11.jpg" alt="Logo 11"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-12.jpg" alt="Logo 12"></div>
         </div>
         <!-- Duplicate for seamless loop -->
         <div class="carousel-col">
-          <div class="hero-logo-card"><img src="img/portfolio/logo1.png" alt="Brew Lab"></div>
-          <div class="hero-logo-card"><img src="img/portfolio/logo4.png" alt="KidsBrain"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-01.jpg" alt="Doctor Online"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-04.jpg" alt="Logo 4"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-07.jpg" alt="Logo 7"></div>
         </div>
         <div class="carousel-col">
-          <div class="hero-logo-card"><img src="img/portfolio/logo2.png" alt="NexaFlow"></div>
-          <div class="hero-logo-card"><img src="img/portfolio/logo5.png" alt="Shield Partners"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-02.jpg" alt="Recargo"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-05.jpg" alt="Logo 5"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-08.jpg" alt="Logo 8"></div>
         </div>
         <div class="carousel-col">
-          <div class="hero-logo-card"><img src="img/portfolio/logo3.png" alt="Aurum"></div>
-          <div class="hero-logo-card"><img src="img/portfolio/logo6.png" alt="GreenLeaf"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-03.jpg" alt="Logo 3"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-06.jpg" alt="Logo 6"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-09.jpg" alt="Logo 9"></div>
+        </div>
+        <div class="carousel-col">
+          <div class="hero-logo-card"><img src="img/logos/logo-10.jpg" alt="Logo 10"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-11.jpg" alt="Logo 11"></div>
+          <div class="hero-logo-card"><img src="img/logos/logo-12.jpg" alt="Logo 12"></div>
         </div>
       </div>
     </div>
@@ -238,7 +266,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
     <div class="animate"><div class="stat-num">200+</div><div class="stat-label">Логотипов создано</div></div>
     <div class="animate delay-1"><div class="stat-num">98%</div><div class="stat-label">Клиентов довольны</div></div>
     <div class="animate delay-2"><div class="stat-num">3-5</div><div class="stat-label">Дней на разработку</div></div>
-    <div class="animate delay-3"><div class="stat-num">от 5K</div><div class="stat-label">Стоимость в рублях</div></div>
+    <div class="animate delay-3"><div class="stat-num">от 15K</div><div class="stat-label">Стоимость в рублях</div></div>
   </div>
 </div>
 
@@ -249,12 +277,18 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
     <h2 class="section-title">Наши <span>работы</span></h2>
     <p class="section-desc">Каждый логотип — это история бренда. Вот несколько примеров наших последних проектов.</p>
     <div class="portfolio-grid">
-      <div class="portfolio-card animate"><img src="img/portfolio/logo1.png" alt="Brew Lab"><div class="portfolio-info"><h3>Brew Lab</h3><p>Кофейня · Минимализм</p></div></div>
-      <div class="portfolio-card animate delay-1"><img src="img/portfolio/logo2.png" alt="NexaFlow"><div class="portfolio-info"><h3>NexaFlow</h3><p>IT-стартап · Технологичный</p></div></div>
-      <div class="portfolio-card animate delay-2"><img src="img/portfolio/logo3.png" alt="Aurum"><div class="portfolio-info"><h3>Aurum</h3><p>Ювелирный бренд · Люкс</p></div></div>
-      <div class="portfolio-card animate delay-1"><img src="img/portfolio/logo4.png" alt="KidsBrain"><div class="portfolio-info"><h3>KidsBrain</h3><p>Детское приложение · Яркий</p></div></div>
-      <div class="portfolio-card animate delay-2"><img src="img/portfolio/logo5.png" alt="Shield Partners"><div class="portfolio-info"><h3>Shield & Partners</h3><p>Юридическая компания · Классика</p></div></div>
-      <div class="portfolio-card animate delay-3"><img src="img/portfolio/logo6.png" alt="GreenLeaf"><div class="portfolio-info"><h3>GreenLeaf</h3><p>Эко-косметика · Органик</p></div></div>
+      <div class="portfolio-card animate" onclick="openLightbox(1)"><img src="img/portfolio/portfolio-01.jpg" alt="Doctor Online"><div class="portfolio-info"><h3>Doctor Online</h3><p>Медицина · Минимализм</p></div></div>
+      <div class="portfolio-card animate delay-1" onclick="openLightbox(2)"><img src="img/portfolio/portfolio-02.jpg" alt="Recargo"><div class="portfolio-info"><h3>Recargo</h3><p>Логистика · Динамика</p></div></div>
+      <div class="portfolio-card animate delay-2" onclick="openLightbox(3)"><img src="img/portfolio/portfolio-03.jpg" alt="Логотип 3"><div class="portfolio-info"><h3>Brand 03</h3><p>Айдентика · Современный</p></div></div>
+      <div class="portfolio-card animate" onclick="openLightbox(4)"><img src="img/portfolio/portfolio-04.jpg" alt="Логотип 4"><div class="portfolio-info"><h3>Brand 04</h3><p>Айдентика · Современный</p></div></div>
+      <div class="portfolio-card animate delay-1" onclick="openLightbox(5)"><img src="img/portfolio/portfolio-05.jpg" alt="Логотип 5"><div class="portfolio-info"><h3>Brand 05</h3><p>Айдентика · Современный</p></div></div>
+      <div class="portfolio-card animate delay-2" onclick="openLightbox(6)"><img src="img/portfolio/portfolio-06.jpg" alt="Логотип 6"><div class="portfolio-info"><h3>Brand 06</h3><p>Айдентика · Современный</p></div></div>
+      <div class="portfolio-card animate" onclick="openLightbox(7)"><img src="img/portfolio/portfolio-07.jpg" alt="Логотип 7"><div class="portfolio-info"><h3>Brand 07</h3><p>Айдентика · Современный</p></div></div>
+      <div class="portfolio-card animate delay-1" onclick="openLightbox(8)"><img src="img/portfolio/portfolio-08.jpg" alt="Логотип 8"><div class="portfolio-info"><h3>Brand 08</h3><p>Айдентика · Современный</p></div></div>
+      <div class="portfolio-card animate delay-2" onclick="openLightbox(9)"><img src="img/portfolio/portfolio-09.jpg" alt="Логотип 9"><div class="portfolio-info"><h3>Brand 09</h3><p>Айдентика · Современный</p></div></div>
+      <div class="portfolio-card animate" onclick="openLightbox(10)"><img src="img/portfolio/portfolio-10.jpg" alt="Логотип 10"><div class="portfolio-info"><h3>Brand 10</h3><p>Айдентика · Современный</p></div></div>
+      <div class="portfolio-card animate delay-1" onclick="openLightbox(11)"><img src="img/portfolio/portfolio-11.jpg" alt="Логотип 11"><div class="portfolio-info"><h3>Brand 11</h3><p>Айдентика · Современный</p></div></div>
+      <div class="portfolio-card animate delay-2" onclick="openLightbox(12)"><img src="img/portfolio/portfolio-12.jpg" alt="Логотип 12"><div class="portfolio-info"><h3>Brand 12</h3><p>Айдентика · Современный</p></div></div>
     </div>
   </div>
 </section>
@@ -283,43 +317,60 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
     <div class="pricing-grid">
       <div class="price-card animate">
         <div class="price-name">Стартовый</div>
-        <div class="price-amount">5 000 ₽</div>
-        <div class="price-desc">Для начинающих проектов и стартапов</div>
+        <div class="price-amount">15 000 ₽</div>
+        <div class="price-desc">Для начинающих проектов</div>
         <ul class="price-features">
           <li>2 варианта логотипа</li>
-          <li>2 раунда правок</li>
-          <li>PNG + SVG форматы</li>
-          <li>Срок: 3 рабочих дня</li>
+          <li>Безлимитные правки</li>
+          <li>Векторные исходники</li>
+          <li>Срок: до 3 рабочих дней</li>
         </ul>
         <a href="#contact" class="price-btn price-btn-outline">Заказать</a>
       </div>
       <div class="price-card popular animate delay-1">
-        <div class="price-name">Фирменный стиль</div>
-        <div class="price-amount">15 000 ₽</div>
-        <div class="price-desc">Полноценная айдентика для бизнеса</div>
+        <div class="price-name">Стандарт</div>
+        <div class="price-amount">22 000 ₽</div>
+        <div class="price-desc">Расширенный пакет с favicon</div>
         <ul class="price-features">
-          <li>3 варианта логотипа</li>
+          <li>4 варианта логотипа</li>
           <li>Безлимитные правки</li>
-          <li>Все форматы + исходники</li>
-          <li>Визитка + фирменный бланк</li>
-          <li>Гайдлайн по использованию</li>
-          <li>Срок: 5 рабочих дней</li>
+          <li>Векторные исходники</li>
+          <li>Favicon + аватарка</li>
+          <li>Срок: до 3 рабочих дней</li>
         </ul>
         <a href="#contact" class="price-btn price-btn-primary">Заказать</a>
       </div>
       <div class="price-card animate delay-2">
-        <div class="price-name">Брендбук</div>
-        <div class="price-amount">30 000 ₽</div>
-        <div class="price-desc">Полный брендбук для масштабирования</div>
+        <div class="price-name">Бизнес</div>
+        <div class="price-amount">27 000 ₽</div>
+        <div class="price-desc">Полная айдентика бренда</div>
         <ul class="price-features">
-          <li>5 вариантов логотипа</li>
+          <li>6 вариантов логотипа</li>
           <li>Безлимитные правки</li>
-          <li>Все форматы + исходники</li>
-          <li>Полный брендбук (40+ страниц)</li>
-          <li>Соцсети: оформление профилей</li>
-          <li>Фирменный стиль: шрифты, цвета</li>
-          <li>Мерч: футболка, кружка, ручка</li>
-          <li>Срок: 10 рабочих дней</li>
+          <li>Векторные исходники</li>
+          <li>Favicon + аватарка</li>
+          <li>Краткая версия логотипа</li>
+          <li>ЧБ версия логотипа</li>
+          <li>Фирменная визитка</li>
+          <li>Срок: до 3 рабочих дней</li>
+        </ul>
+        <a href="#contact" class="price-btn price-btn-outline">Заказать</a>
+      </div>
+      <div class="price-card animate delay-3">
+        <div class="price-name">Брендбук</div>
+        <div class="price-amount">39 000 ₽</div>
+        <div class="price-desc">Полный брендбук (40+ страниц)</div>
+        <ul class="price-features">
+          <li>6 вариантов логотипа</li>
+          <li>Безлимитные правки</li>
+          <li>Векторные исходники</li>
+          <li>Favicon + аватарка</li>
+          <li>Краткая и ЧБ версии</li>
+          <li>Горизонтальная и вертикальная версии</li>
+          <li>Фирменная визитка, печать, бланк</li>
+          <li>Шрифты, цвета</li>
+          <li>Визуализация: кружка, футболка, кепка, вывеска</li>
+          <li>Срок: до 7 рабочих дней</li>
         </ul>
         <a href="#contact" class="price-btn price-btn-outline">Заказать</a>
       </div>
@@ -377,7 +428,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
 
       <div class="quiz-step" data-step="5">
         <div class="quiz-question">Ваша примерная стоимость:</div>
-        <div class="price-amount" id="quizResult" style="font-size:3rem;margin:20px 0;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">15 000 ₽</div>
+        <div class="price-amount" id="quizResult" style="font-size:3rem;margin:20px 0;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">22 000 ₽</div>
         <p style="color:var(--text-muted);margin-bottom:24px">Точную стоимость рассчитаем после обсуждения деталей</p>
         <a href="#contact" class="btn btn-primary">Обсудить проект</a>
       </div>
@@ -450,10 +501,10 @@ document.querySelectorAll('.quiz-opt').forEach(opt => {
         document.getElementById('qProgress').style.width = (next * 20) + '%'
 
         if (next === 5) {
-          let price = 5000
-          if (quizAnswers['3'] === 'identity') price = 15000
-          else if (quizAnswers['3'] === 'social') price = 20000
-          else if (quizAnswers['3'] === 'brandbook') price = 30000
+          let price = 15000
+          if (quizAnswers['3'] === 'identity') price = 22000
+          else if (quizAnswers['3'] === 'social') price = 27000
+          else if (quizAnswers['3'] === 'brandbook') price = 39000
           if (quizAnswers['4'] === 'urgent') price = Math.round(price * 1.5)
           if (quizAnswers['1'] === 'medium') price = Math.round(price * 1.2)
           document.getElementById('quizResult').textContent = price.toLocaleString('ru') + ' ₽'
@@ -485,6 +536,41 @@ function submitForm(e) {
   })
   return false
 }
+
+// Lightbox
+const TOTAL_LOGOS = 12;
+let currentLogo = 1;
+function openLightbox(num) {
+  currentLogo = num;
+  document.getElementById('lightboxImg').src = `img/portfolio/portfolio-${String(num).padStart(2,'0')}.jpg`;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e && e.target.tagName === 'BUTTON') return;
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir, e) {
+  e.stopPropagation();
+  currentLogo += dir;
+  if (currentLogo < 1) currentLogo = TOTAL_LOGOS;
+  if (currentLogo > TOTAL_LOGOS) currentLogo = 1;
+  document.getElementById('lightboxImg').src = `img/portfolio/portfolio-${String(currentLogo).padStart(2,'0')}.jpg`;
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1, {stopPropagation:()=>{}});
+  if (e.key === 'ArrowRight') navLightbox(1, {stopPropagation:()=>{}});
+});
 </script>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1, event)">‹</button>
+  <img id="lightboxImg" src="" alt="Логотип">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1, event)">›</button>
+</div>
 </body>
 </html>
