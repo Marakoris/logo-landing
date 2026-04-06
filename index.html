@@ -7,6 +7,8 @@
 <meta name="description" content="Brandee — студия дизайна логотипов и фирменного стиля. Уникальный дизайн, до 6 вариантов, безлимитные правки. Готовность за 3 дня. От 15 000 ₽.">
 <meta name="keywords" content="заказать логотип, дизайн логотипа, разработка логотипа, brandee, фирменный стиль, брендбук">
 <link rel="canonical" href="https://brandee.ru/">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://brandee.ru/">
 <meta property="og:title" content="Brandee — создание логотипа на заказ от 15 000 ₽">
@@ -38,6 +40,8 @@ nav{position:fixed;top:0;width:100%;z-index:100;padding:16px 0;transition:all 0.
 nav.scrolled{padding:10px 0;background:rgba(15,15,26,0.95);box-shadow:0 2px 20px rgba(0,0,0,0.3)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
 .logo-text{font-size:1.4rem;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-link{display:flex;align-items:center}
+.logo-img{height:36px;width:auto;display:block}
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{color:var(--text-muted);font-size:0.9rem;transition:color 0.3s}
 .nav-links a:hover{color:var(--white)}
@@ -214,7 +218,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
 <!-- Nav -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="#" class="logo-text">Brandee</a>
+    <a href="#" class="logo-link"><img src="img/logo.png" alt="Brandee" class="logo-img"></a>
     <div class="nav-links">
       <a href="#portfolio">Портфолио</a>
       <a href="#pricing">Цены</a>
