@@ -213,6 +213,25 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
 /* Scroll reveal tweaks */
 .delay-1{transition-delay:0.1s}.delay-2{transition-delay:0.2s}.delay-3{transition-delay:0.3s}
 </style>
+
+<!-- Yandex.Metrika counter (PLACEHOLDER — replace ID after creating counter at metrika.yandex.ru) -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(99999999, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true,
+        ecommerce:"dataLayer"
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/99999999" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
 
@@ -541,10 +560,10 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
         <h2 class="section-title">Обсудим ваш <span>проект</span></h2>
         <p class="section-desc">Оставьте заявку и мы свяжемся в течение 30 минут в рабочее время.</p>
         <div class="contact-info">
-          <div class="contact-item"><div class="contact-icon">💬</div><div><h4>Telegram (предпочтительно)</h4><p><a href="https://t.me/brandee_studio">@brandee_studio</a></p></div></div>
+          <div class="contact-item"><div class="contact-icon">💬</div><div><h4>Telegram (предпочтительно)</h4><p><a onclick="ym(99999999,'reachGoal','telegram_click')" href="https://t.me/brandee_studio">@brandee_studio</a></p></div></div>
           <div class="contact-item"><div class="contact-icon">✉️</div><div><h4>Email</h4><p><a href="mailto:hello@brandee.ru">hello@brandee.ru</a></p></div></div>
         </div>
-        <a href="https://t.me/brandee_studio" class="btn btn-primary" style="margin-top:24px">Написать в Telegram</a>
+        <a onclick="ym(99999999,'reachGoal','telegram_click')" href="https://t.me/brandee_studio" class="btn btn-primary" style="margin-top:24px">Написать в Telegram</a>
       </div>
       <form class="contact-form" id="contactForm" onsubmit="return submitForm(event)">
         <div class="form-group"><label>Ваше имя</label><input type="text" name="name" placeholder="Как к вам обращаться?" required></div>
@@ -603,6 +622,7 @@ document.querySelectorAll('.quiz-opt').forEach(opt => {
           if (quizAnswers['4'] === 'urgent') price = Math.round(price * 1.5)
           if (quizAnswers['1'] === 'medium') price = Math.round(price * 1.2)
           document.getElementById('quizResult').textContent = price.toLocaleString('ru') + ' ₽'
+          if (typeof ym !== 'undefined') ym(99999999, 'reachGoal', 'quiz_complete')
         }
       }
     }, 400)
@@ -625,9 +645,10 @@ function submitForm(e) {
     if (r.ok) {
       document.getElementById('formStatus').innerHTML = '<span style="color:#10b981">✓ Заявка отправлена! Свяжемся в течение 30 минут.</span>'
       form.reset()
+      if (typeof ym !== 'undefined') ym(99999999, 'reachGoal', 'form_submit')
     } else throw new Error()
   }).catch(() => {
-    document.getElementById('formStatus').innerHTML = '<span style="color:#ef4444">Ошибка. Напишите нам в <a href="https://t.me/brandee_studio">Telegram</a>.</span>'
+    document.getElementById('formStatus').innerHTML = '<span style="color:#ef4444">Ошибка. Напишите нам в <a onclick="ym(99999999,'reachGoal','telegram_click')" href="https://t.me/brandee_studio">Telegram</a>.</span>'
   })
   return false
 }
