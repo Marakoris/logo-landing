@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Отписка от рассылки — Brandee</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+body{background:#0f0f1a;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.box{max-width:480px;width:100%;background:#1a1a2e;border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:40px;text-align:center}
+h1{font-size:24px;margin-bottom:16px;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+p{color:#a0a0b8;line-height:1.6;margin-bottom:24px}
+.email{background:rgba(99,102,241,0.1);padding:8px 16px;border-radius:8px;display:inline-block;margin:8px 0;font-family:monospace;color:#6366f1}
+.btn{display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.success{display:none;color:#10b981;margin-top:16px;font-weight:600}
+.success.show{display:block}
+.muted{color:#666;font-size:13px;margin-top:24px}
+.muted a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Отписаться от Brandee</h1>
+  <p>Вы хотите перестать получать письма от студии Brandee?</p>
+  <div class="email" id="email-display">—</div>
+  <p>Мы удалим ваш адрес из базы рассылки в течение 24 часов.</p>
+  <form id="form" action="mailto:hi@brandee.ru" method="post" enctype="text/plain">
+    <input type="hidden" name="action" value="unsubscribe">
+    <input type="hidden" name="email" id="email-input">
+    <button type="submit" class="btn" onclick="confirmUnsub()">Подтвердить отписку</button>
+  </form>
+  <div class="success" id="success">✓ Спасибо, ваш запрос отправлен. Адрес будет удалён в течение 24 часов.</div>
+  <div class="muted">
+    Передумали? <a href="https://brandee.ru/">Вернуться на сайт</a><br>
+    Связаться с нами: <a href="mailto:hi@brandee.ru">hi@brandee.ru</a>
+  </div>
+</div>
+<script>
+const params = new URLSearchParams(location.search);
+const e = params.get('e') || '';
+if (e) {
+  document.getElementById('email-display').textContent = e;
+  document.getElementById('email-input').value = e;
+}
+function confirmUnsub() {
+  setTimeout(() => {
+    document.getElementById('success').classList.add('show');
+    document.getElementById('form').style.display = 'none';
+  }, 100);
+}
+</script>
+</body>
+</html>
