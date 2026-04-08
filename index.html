@@ -194,6 +194,13 @@ section{padding:100px 0}
 .brief-btn:hover{transform:translateY(-2px)}
 .brief-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
 @keyframes fadeIn{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:translateX(0)}}
+/* Brief modal */
+.brief-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
+.brief-modal.open{display:flex}
+.brief-modal-box{background:var(--bg2);border-radius:20px;padding:36px;border:1px solid rgba(255,255,255,0.1);max-width:560px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .3s cubic-bezier(0.16,1,0.3,1)}
+.brief-modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);border:none;color:var(--white);font-size:24px;cursor:pointer;line-height:1}
+.brief-modal-close:hover{background:rgba(255,255,255,0.12)}
+@keyframes modalIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
 .contact-info{padding:20px 0}
 .contact-item{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
 .contact-icon{width:48px;height:48px;border-radius:12px;background:rgba(99,102,241,0.1);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
@@ -263,7 +270,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
       <a href="#quiz">Квиз</a>
       <a href="#process">Этапы</a>
       <a href="#guarantees">Гарантии</a>
-      <a href="#contact" class="nav-cta">Оставить заявку</a>
+      <a href="javascript:openBrief()" class="nav-cta">Заполнить бриф</a>
     </div>
   </div>
 </nav>
@@ -380,12 +387,12 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
 <section id="pricing">
   <div class="container">
     <div class="section-badge">Тарифы</div>
-    <h2 class="section-title">Прозрачные <span>цены</span></h2>
-    <p class="section-desc">Выберите пакет под ваши задачи. Никаких скрытых платежей.</p>
+    <h2 class="section-title">Выберите <span>пакет</span></h2>
+    <p class="section-desc">Цена зависит от сложности и объёма задачи. Заполните бриф — вернёмся с точным расчётом в течение 30 минут.</p>
     <div class="pricing-grid">
       <div class="price-card animate">
         <div class="price-name">Стартовый</div>
-        <div class="price-amount">15 000 ₽</div>
+        <div class="price-amount" style="font-size:1.4rem;color:var(--primary-light);">По брифу</div>
         <div class="price-desc">Для начинающих проектов</div>
         <ul class="price-features">
           <li>2 варианта логотипа</li>
@@ -393,11 +400,11 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
           <li>Векторные исходники</li>
           <li>Срок: до 3 рабочих дней</li>
         </ul>
-        <a href="#contact" class="price-btn price-btn-outline">Заказать</a>
+        <a href="javascript:openBrief()" class="price-btn price-btn-outline">Узнать стоимость</a>
       </div>
       <div class="price-card popular animate delay-1">
         <div class="price-name">Стандарт</div>
-        <div class="price-amount">22 000 ₽</div>
+        <div class="price-amount" style="font-size:1.4rem;color:var(--primary-light);">По брифу</div>
         <div class="price-desc">Расширенный пакет с favicon</div>
         <ul class="price-features">
           <li>4 варианта логотипа</li>
@@ -406,11 +413,11 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
           <li>Favicon + аватарка</li>
           <li>Срок: до 3 рабочих дней</li>
         </ul>
-        <a href="#contact" class="price-btn price-btn-primary">Заказать</a>
+        <a href="javascript:openBrief()" class="price-btn price-btn-primary">Узнать стоимость</a>
       </div>
       <div class="price-card animate delay-2">
         <div class="price-name">Бизнес</div>
-        <div class="price-amount">27 000 ₽</div>
+        <div class="price-amount" style="font-size:1.4rem;color:var(--primary-light);">По брифу</div>
         <div class="price-desc">Полная айдентика бренда</div>
         <ul class="price-features">
           <li>6 вариантов логотипа</li>
@@ -422,11 +429,11 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
           <li>Фирменная визитка</li>
           <li>Срок: до 3 рабочих дней</li>
         </ul>
-        <a href="#contact" class="price-btn price-btn-outline">Заказать</a>
+        <a href="javascript:openBrief()" class="price-btn price-btn-outline">Узнать стоимость</a>
       </div>
       <div class="price-card animate delay-3">
         <div class="price-name">Брендбук</div>
-        <div class="price-amount">39 000 ₽</div>
+        <div class="price-amount" style="font-size:1.4rem;color:var(--primary-light);">По брифу</div>
         <div class="price-desc">Полный брендбук (40+ страниц)</div>
         <ul class="price-features">
           <li>6 вариантов логотипа</li>
@@ -440,7 +447,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
           <li>Визуализация: кружка, футболка, кепка, вывеска</li>
           <li>Срок: до 7 рабочих дней</li>
         </ul>
-        <a href="#contact" class="price-btn price-btn-outline">Заказать</a>
+        <a href="javascript:openBrief()" class="price-btn price-btn-outline">Узнать стоимость</a>
       </div>
     </div>
   </div>
@@ -498,7 +505,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
         <div class="quiz-question">Ваша примерная стоимость:</div>
         <div class="price-amount" id="quizResult" style="font-size:3rem;margin:20px 0;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">22 000 ₽</div>
         <p style="color:var(--text-muted);margin-bottom:24px">Точную стоимость рассчитаем после обсуждения деталей</p>
-        <a href="#contact" class="btn btn-primary">Обсудить проект</a>
+        <a href="javascript:openBrief()" class="btn btn-primary">Обсудить проект</a>
       </div>
     </div>
   </div>
@@ -550,105 +557,98 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
 <!-- Contact -->
 <section id="contact">
   <div class="container">
-    <div class="contact-grid">
-      <div>
-        <div class="section-badge">Контакты</div>
-        <h2 class="section-title">Обсудим ваш <span>проект</span></h2>
-        <p class="section-desc">Оставьте заявку и мы свяжемся в течение 30 минут в рабочее время.</p>
-        <div class="contact-info">
-          <div class="contact-item"><div class="contact-icon">💬</div><div><h4>Telegram (предпочтительно)</h4><p><a onclick="ym(99999999,'reachGoal','telegram_click')" href="https://t.me/brandee_studio">@brandee_studio</a></p></div></div>
-          <div class="contact-item"><div class="contact-icon">✉️</div><div><h4>Email</h4><p><a href="mailto:hello@brandee.ru">hello@brandee.ru</a></p></div></div>
-        </div>
-        <a onclick="ym(99999999,'reachGoal','telegram_click')" href="https://t.me/brandee_studio" class="btn btn-primary" style="margin-top:24px">Написать в Telegram</a>
-      </div>
-      <form class="contact-form" id="contactForm" onsubmit="return submitForm(event)">
-        <div class="brief-progress" id="briefProgress"></div>
-
-        <!-- Step 0: Contact -->
-        <div class="brief-step active" data-step="0">
-          <div class="brief-step-label">Шаг 1 из 9</div>
-          <div class="brief-step-title">Контактные данные</div>
-          <div class="brief-step-hint">Как с вами связаться для обсуждения проекта</div>
-          <div class="form-group"><label>Ваше имя</label><input type="text" name="name" placeholder="Как к вам обращаться?" required></div>
-          <div class="form-group"><label>Телефон или Telegram</label><input type="text" name="contact" placeholder="+7... или @username" required></div>
-          <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="mail@example.com"></div>
-          <div class="form-group"><label>Тариф</label><select name="plan"><option>Стартовый — 15 000 ₽</option><option selected>Стандарт — 22 000 ₽</option><option>Бизнес — 27 000 ₽</option><option>Брендбук — 39 000 ₽</option><option>Не определился</option></select></div>
-        </div>
-
-        <!-- Step 1: Название -->
-        <div class="brief-step" data-step="1">
-          <div class="brief-step-label">Шаг 2 из 9</div>
-          <div class="brief-step-title">Наименование компании</div>
-          <div class="brief-step-hint">Какое текстовое содержание должно быть в логотипе</div>
-          <div class="form-group"><textarea name="brief_name" placeholder="Например: Brandee, Doctor Online, Recargo..."></textarea></div>
-        </div>
-
-        <!-- Step 2: Слоган -->
-        <div class="brief-step" data-step="2">
-          <div class="brief-step-label">Шаг 3 из 9</div>
-          <div class="brief-step-title">Слоган, приписка, дескриптор</div>
-          <div class="brief-step-hint">Подпись под названием, описывающая род деятельности. Если не нужна — пропустите</div>
-          <div class="form-group"><textarea name="brief_slogan" placeholder="Например: «Студия дизайна», «Доставка за 30 минут»..."></textarea></div>
-        </div>
-
-        <!-- Step 3: Услуги -->
-        <div class="brief-step" data-step="3">
-          <div class="brief-step-label">Шаг 4 из 9</div>
-          <div class="brief-step-title">Основные услуги компании</div>
-          <div class="brief-step-hint">Перечислите основные услуги или продукты, которые предоставляет ваша компания</div>
-          <div class="form-group"><textarea name="brief_services" placeholder="Например: доставка еды, пошив одежды, ремонт электроники..."></textarea></div>
-        </div>
-
-        <!-- Step 4: Стилистика -->
-        <div class="brief-step" data-step="4">
-          <div class="brief-step-label">Шаг 5 из 9</div>
-          <div class="brief-step-title">Стилистика логотипа</div>
-          <div class="brief-step-hint">Какое настроение должен передавать логотип</div>
-          <div class="form-group"><textarea name="brief_style" placeholder="Строгий / шуточный / детский / агрессивный / спортивный / нежный / минимализм / премиум..."></textarea></div>
-        </div>
-
-        <!-- Step 5: Графика -->
-        <div class="brief-step" data-step="5">
-          <div class="brief-step-label">Шаг 6 из 9</div>
-          <div class="brief-step-title">Графические элементы</div>
-          <div class="brief-step-hint">Графический образ, знак или силуэт, который можно использовать в логотипе</div>
-          <div class="form-group"><textarea name="brief_graphics" placeholder="Например: листок, молния, животное, абстрактная фигура, буква-символ..."></textarea></div>
-        </div>
-
-        <!-- Step 6: Примеры -->
-        <div class="brief-step" data-step="6">
-          <div class="brief-step-label">Шаг 7 из 9</div>
-          <div class="brief-step-title">Примеры логотипов</div>
-          <div class="brief-step-hint">Примеры логотипов, которые нравятся. Можно не из вашей тематической области. Ссылки или текстовое описание</div>
-          <div class="form-group"><textarea name="brief_examples" placeholder="Ссылки на Behance, Pinterest, Google Images или описание..."></textarea></div>
-        </div>
-
-        <!-- Step 7: Цвет -->
-        <div class="brief-step" data-step="7">
-          <div class="brief-step-label">Шаг 8 из 9</div>
-          <div class="brief-step-title">Цветовая гамма</div>
-          <div class="brief-step-hint">Желаемые цвета или которые не нравятся категорически</div>
-          <div class="form-group"><textarea name="brief_colors" placeholder="Например: синий + белый, тёплые природные тона, без красного..."></textarea></div>
-        </div>
-
-        <!-- Step 8: Final -->
-        <div class="brief-step" data-step="8">
-          <div class="brief-step-label">Шаг 9 из 9</div>
-          <div class="brief-step-title">Дополнительно</div>
-          <div class="brief-step-hint">Что ещё важно знать о проекте (необязательно)</div>
-          <div class="form-group"><textarea name="brief_extra" placeholder="Целевая аудитория, конкуренты, срочность, другие пожелания..."></textarea></div>
-        </div>
-
-        <div class="brief-nav">
-          <button type="button" class="brief-btn brief-btn-prev" id="briefPrev" onclick="briefNav(-1)" disabled>← Назад</button>
-          <button type="button" class="brief-btn brief-btn-next" id="briefNext" onclick="briefNav(1)">Далее →</button>
-          <button type="submit" class="brief-btn brief-btn-next" id="briefSubmit" style="display:none">Отправить заявку</button>
-        </div>
-        <p id="formStatus" style="text-align:center;margin-top:12px;font-size:0.9rem"></p>
-      </form>
+    <div class="section-badge">Начать работу</div>
+    <h2 class="section-title">Обсудим ваш <span>проект</span></h2>
+    <p class="section-desc" style="max-width:600px;margin:0 auto 32px">Заполните короткий бриф (7 вопросов, ~2 минуты) — и мы вернёмся с точным расчётом стоимости и сроков в течение 30 минут.</p>
+    <div style="text-align:center">
+      <button onclick="openBrief()" class="btn btn-primary" style="font-size:1.1rem;padding:18px 36px">📝 Заполнить бриф</button>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-top:16px">
+        или написать напрямую: <a onclick="ym(99999999,'reachGoal','telegram_click')" href="https://t.me/brandee_studio_bot" style="color:var(--primary-light)">@brandee_studio_bot</a>
+        · <a href="mailto:hi@brandee.ru" style="color:var(--primary-light)">hi@brandee.ru</a>
+      </p>
     </div>
   </div>
 </section>
+
+<!-- Brief Modal -->
+<div id="briefModal" class="brief-modal" onclick="if(event.target===this)closeBrief()">
+  <div class="brief-modal-box">
+    <button class="brief-modal-close" onclick="closeBrief()">×</button>
+    <form class="contact-form" id="contactForm" onsubmit="return submitForm(event)" style="background:transparent;padding:0;border:0">
+      <div class="brief-progress" id="briefProgress"></div>
+
+      <div class="brief-step active" data-step="0">
+        <div class="brief-step-label">Шаг 1 из 8</div>
+        <div class="brief-step-title">Наименование компании</div>
+        <div class="brief-step-hint">Какое текстовое содержание должно быть в логотипе</div>
+        <div class="form-group"><textarea name="brief_name" placeholder="Например: Brandee, Doctor Online, Recargo..." required></textarea></div>
+      </div>
+
+      <div class="brief-step" data-step="1">
+        <div class="brief-step-label">Шаг 2 из 8</div>
+        <div class="brief-step-title">Слоган, приписка, дескриптор</div>
+        <div class="brief-step-hint">Подпись под названием, описывающая род деятельности. Если не нужна — пропустите</div>
+        <div class="form-group"><textarea name="brief_slogan" placeholder="Например: «Студия дизайна», «Доставка за 30 минут»..."></textarea></div>
+      </div>
+
+      <div class="brief-step" data-step="2">
+        <div class="brief-step-label">Шаг 3 из 8</div>
+        <div class="brief-step-title">Основные услуги компании</div>
+        <div class="brief-step-hint">Перечислите основные услуги или продукты, которые предоставляет ваша компания</div>
+        <div class="form-group"><textarea name="brief_services" placeholder="Например: доставка еды, пошив одежды, ремонт электроники..." required></textarea></div>
+      </div>
+
+      <div class="brief-step" data-step="3">
+        <div class="brief-step-label">Шаг 4 из 8</div>
+        <div class="brief-step-title">Стилистика логотипа</div>
+        <div class="brief-step-hint">Какое настроение должен передавать логотип</div>
+        <div class="form-group"><textarea name="brief_style" placeholder="Строгий / шуточный / детский / агрессивный / спортивный / нежный / минимализм / премиум..."></textarea></div>
+      </div>
+
+      <div class="brief-step" data-step="4">
+        <div class="brief-step-label">Шаг 5 из 8</div>
+        <div class="brief-step-title">Графические элементы</div>
+        <div class="brief-step-hint">Графический образ, знак или силуэт, который можно использовать в логотипе</div>
+        <div class="form-group"><textarea name="brief_graphics" placeholder="Например: листок, молния, животное, абстрактная фигура, буква-символ..."></textarea></div>
+      </div>
+
+      <div class="brief-step" data-step="5">
+        <div class="brief-step-label">Шаг 6 из 8</div>
+        <div class="brief-step-title">Примеры логотипов</div>
+        <div class="brief-step-hint">Примеры логотипов, которые нравятся. Можно не из вашей тематической области</div>
+        <div class="form-group"><textarea name="brief_examples" placeholder="Ссылки на Behance, Pinterest или описание..."></textarea></div>
+      </div>
+
+      <div class="brief-step" data-step="6">
+        <div class="brief-step-label">Шаг 7 из 8</div>
+        <div class="brief-step-title">Цветовая гамма</div>
+        <div class="brief-step-hint">Желаемые цвета или которые не нравятся категорически</div>
+        <div class="form-group"><textarea name="brief_colors" placeholder="Например: синий + белый, тёплые природные тона, без красного..."></textarea></div>
+      </div>
+
+      <div class="brief-step" data-step="7">
+        <div class="brief-step-label">Шаг 8 из 8</div>
+        <div class="brief-step-title">Тариф и дополнительно</div>
+        <div class="brief-step-hint">На финальном шаге — откроется Telegram-бот, который получит ваш бриф автоматически</div>
+        <div class="form-group"><label>Интересующий пакет</label><select name="plan">
+          <option>Стартовый</option>
+          <option selected>Стандарт</option>
+          <option>Бизнес</option>
+          <option>Брендбук</option>
+          <option>Не определился — подскажите</option>
+        </select></div>
+        <div class="form-group"><label>Что ещё важно знать (необязательно)</label><textarea name="brief_extra" placeholder="Срочность, целевая аудитория, конкуренты, другие пожелания..."></textarea></div>
+      </div>
+
+      <div class="brief-nav">
+        <button type="button" class="brief-btn brief-btn-prev" id="briefPrev" onclick="briefNav(-1)" disabled>← Назад</button>
+        <button type="button" class="brief-btn brief-btn-next" id="briefNext" onclick="briefNav(1)">Далее →</button>
+        <button type="submit" class="brief-btn brief-btn-next" id="briefSubmit" style="display:none">📤 Отправить в Telegram</button>
+      </div>
+      <p id="formStatus" style="text-align:center;margin-top:12px;font-size:0.9rem"></p>
+    </form>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer>
@@ -706,8 +706,21 @@ document.querySelectorAll('.quiz-opt').forEach(opt => {
 })
 
 // Form submit → Telegram
+// Brief modal
+function openBrief() {
+  document.getElementById('briefModal').classList.add('open')
+  document.body.style.overflow = 'hidden'
+  briefShow(0)
+  if (typeof ym !== 'undefined') ym(99999999, 'reachGoal', 'brief_open')
+}
+function closeBrief() {
+  document.getElementById('briefModal').classList.remove('open')
+  document.body.style.overflow = ''
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBrief() })
+
 // Multi-step brief navigation
-const BRIEF_TOTAL = 9
+const BRIEF_TOTAL = 8
 let briefCurrent = 0
 function renderBriefProgress() {
   const bar = document.getElementById('briefProgress')
@@ -745,41 +758,41 @@ function briefNav(delta) {
 }
 document.addEventListener('DOMContentLoaded', renderBriefProgress)
 
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault()
   const form = e.target
   const data = new FormData(form)
-  const briefText = [
-    `1. Название компании: ${data.get('brief_name') || '—'}`,
-    `2. Слоган/дескриптор: ${data.get('brief_slogan') || '—'}`,
-    `3. Услуги: ${data.get('brief_services') || '—'}`,
-    `4. Стилистика: ${data.get('brief_style') || '—'}`,
-    `5. Графические элементы: ${data.get('brief_graphics') || '—'}`,
-    `6. Примеры логотипов: ${data.get('brief_examples') || '—'}`,
-    `7. Цветовая гамма: ${data.get('brief_colors') || '—'}`,
-    `Доп: ${data.get('brief_extra') || '—'}`,
-  ].join('\n')
+  const payload = {
+    brief_name: data.get('brief_name') || '',
+    brief_slogan: data.get('brief_slogan') || '',
+    brief_services: data.get('brief_services') || '',
+    brief_style: data.get('brief_style') || '',
+    brief_graphics: data.get('brief_graphics') || '',
+    brief_examples: data.get('brief_examples') || '',
+    brief_colors: data.get('brief_colors') || '',
+    brief_extra: data.get('brief_extra') || '',
+    plan: data.get('plan') || '',
+  }
+  const status = document.getElementById('formStatus')
+  status.innerHTML = '<span style="color:#a0a0b8">Сохраняем бриф...</span>'
 
-  // Send form via Formspree (free, no token exposed)
-  fetch('https://formspree.io/f/xpznqwev', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      name: data.get('name'),
-      contact: data.get('contact'),
-      email: data.get('email'),
-      plan: data.get('plan'),
-      brief: briefText,
+  try {
+    const r = await fetch('https://api.brandee.ru/api/brief', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload),
     })
-  }).then(r => {
-    if (r.ok) {
-      document.getElementById('formStatus').innerHTML = '<span style="color:#10b981">✓ Заявка отправлена! Свяжемся в течение 30 минут.</span>'
-      form.reset()
-      if (typeof ym !== 'undefined') ym(99999999, 'reachGoal', 'form_submit')
-    } else throw new Error()
-  }).catch(() => {
-    document.getElementById('formStatus').innerHTML = '<span style="color:#ef4444">Ошибка. Напишите нам в <a onclick="ym(99999999,'reachGoal','telegram_click')" href="https://t.me/brandee_studio">Telegram</a>.</span>'
-  })
+    if (!r.ok) throw new Error('api failed')
+    const {id} = await r.json()
+    status.innerHTML = '<span style="color:#10b981">✓ Открываем Telegram...</span>'
+    if (typeof ym !== 'undefined') ym(99999999, 'reachGoal', 'brief_submit')
+    // редирект в бота с deep-link
+    setTimeout(() => {
+      window.location.href = `https://t.me/brandee_studio_bot?start=${id}`
+    }, 600)
+  } catch (err) {
+    status.innerHTML = '<span style="color:#ef4444">Ошибка сохранения. Напишите напрямую в <a href="https://t.me/brandee_studio_bot">@brandee_studio_bot</a></span>'
+  }
   return false
 }
 
