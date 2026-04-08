@@ -156,17 +156,6 @@ section{padding:100px 0}
 .process-card p{color:var(--text-muted);font-size:0.9rem}
 
 /* Quiz */
-#quiz{background:var(--bg2)}
-.quiz-container{max-width:700px;margin:0 auto;text-align:center}
-.quiz-step{display:none}
-.quiz-step.active{display:block;animation:fade-in 0.5s}
-.quiz-question{font-size:1.5rem;font-weight:700;margin-bottom:32px}
-.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
-.quiz-opt{padding:20px;border-radius:16px;border:2px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.02);cursor:pointer;transition:all 0.3s;font-size:1rem;color:var(--text)}
-.quiz-opt:hover,.quiz-opt.selected{border-color:var(--primary);background:rgba(99,102,241,0.1);color:var(--white)}
-.quiz-progress{height:4px;background:rgba(255,255,255,0.05);border-radius:2px;margin-bottom:32px}
-.quiz-progress-bar{height:100%;background:var(--gradient);border-radius:2px;transition:width 0.4s}
-.quiz-nav{display:flex;justify-content:center;gap:16px}
 
 /* Contact */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
@@ -231,7 +220,6 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
   .lightbox-next{right:10px}
   .process-grid{grid-template-columns:1fr 1fr}
   .contact-grid{grid-template-columns:1fr}
-  .quiz-options{grid-template-columns:1fr}
   .nav-links{display:none}
 }
 
@@ -266,8 +254,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
     <a href="#" class="logo-link"><span class="logo-text">Brand<span class="logo-star">✦</span>ee</span></a>
     <div class="nav-links">
       <a href="#portfolio">Портфолио</a>
-      <a href="#pricing">Цены</a>
-      <a href="#quiz">Квиз</a>
+      <a href="#pricing">Тарифы</a>
       <a href="#process">Этапы</a>
       <a href="#guarantees">Гарантии</a>
       <a href="javascript:openBrief()" class="nav-cta">Заполнить бриф</a>
@@ -283,7 +270,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
       <h1>Создадим <span>логотип</span>, который запомнят</h1>
       <p>Уникальный дизайн для вашего бренда. 3 концепции, неограниченные правки, все исходники. Готовность 3-5 дней.</p>
       <div class="hero-btns">
-        <a href="#quiz" class="btn btn-primary">Рассчитать стоимость</a>
+        <a href="javascript:openBrief()" class="btn btn-primary">Рассчитать стоимость</a>
         <a href="#portfolio" class="btn btn-outline">Смотреть работы</a>
       </div>
     </div>
@@ -453,63 +440,6 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
   </div>
 </section>
 
-<!-- Quiz -->
-<section id="quiz">
-  <div class="container">
-    <div class="quiz-container">
-      <div class="section-badge">Квиз</div>
-      <h2 class="section-title" style="margin-bottom:32px">Узнайте стоимость <span>за 30 секунд</span></h2>
-      <div class="quiz-progress"><div class="quiz-progress-bar" id="qProgress" style="width:20%"></div></div>
-
-      <div class="quiz-step active" data-step="1">
-        <div class="quiz-question">Какой тип бизнеса?</div>
-        <div class="quiz-options">
-          <div class="quiz-opt" data-value="startup">🚀 Стартап / Новый проект</div>
-          <div class="quiz-opt" data-value="small">🏪 Малый бизнес</div>
-          <div class="quiz-opt" data-value="medium">🏢 Средний бизнес</div>
-          <div class="quiz-opt" data-value="personal">👤 Личный бренд</div>
-        </div>
-      </div>
-
-      <div class="quiz-step" data-step="2">
-        <div class="quiz-question">Какой стиль предпочитаете?</div>
-        <div class="quiz-options">
-          <div class="quiz-opt" data-value="minimal">⬜ Минимализм</div>
-          <div class="quiz-opt" data-value="classic">🏛️ Классический</div>
-          <div class="quiz-opt" data-value="modern">💎 Современный / Tech</div>
-          <div class="quiz-opt" data-value="creative">🎨 Креативный / Яркий</div>
-        </div>
-      </div>
-
-      <div class="quiz-step" data-step="3">
-        <div class="quiz-question">Что нужно кроме логотипа?</div>
-        <div class="quiz-options">
-          <div class="quiz-opt" data-value="logo">Только логотип</div>
-          <div class="quiz-opt" data-value="identity">+ Визитка и бланк</div>
-          <div class="quiz-opt" data-value="social">+ Оформление соцсетей</div>
-          <div class="quiz-opt" data-value="brandbook">Полный брендбук</div>
-        </div>
-      </div>
-
-      <div class="quiz-step" data-step="4">
-        <div class="quiz-question">Какие сроки?</div>
-        <div class="quiz-options">
-          <div class="quiz-opt" data-value="urgent">⚡ Срочно (1-2 дня)</div>
-          <div class="quiz-opt" data-value="normal">📅 Стандарт (3-5 дней)</div>
-          <div class="quiz-opt" data-value="relax">🕐 Не торопимся (1-2 недели)</div>
-          <div class="quiz-opt" data-value="thinking">🤔 Пока думаю</div>
-        </div>
-      </div>
-
-      <div class="quiz-step" data-step="5">
-        <div class="quiz-question">Ваша примерная стоимость:</div>
-        <div class="price-amount" id="quizResult" style="font-size:3rem;margin:20px 0;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">22 000 ₽</div>
-        <p style="color:var(--text-muted);margin-bottom:24px">Точную стоимость рассчитаем после обсуждения деталей</p>
-        <a href="javascript:openBrief()" class="btn btn-primary">Обсудить проект</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Guarantees -->
 <section id="guarantees" style="background:var(--bg2)">
@@ -672,39 +602,6 @@ setTimeout(() => document.querySelectorAll('.animate').forEach(el => el.classLis
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50)
 })
-
-// Quiz
-let quizAnswers = {}
-document.querySelectorAll('.quiz-opt').forEach(opt => {
-  opt.addEventListener('click', () => {
-    const step = opt.closest('.quiz-step')
-    step.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'))
-    opt.classList.add('selected')
-    quizAnswers[step.dataset.step] = opt.dataset.value
-
-    setTimeout(() => {
-      const next = parseInt(step.dataset.step) + 1
-      const nextStep = document.querySelector(`.quiz-step[data-step="${next}"]`)
-      if (nextStep) {
-        step.classList.remove('active')
-        nextStep.classList.add('active')
-        document.getElementById('qProgress').style.width = (next * 20) + '%'
-
-        if (next === 5) {
-          let price = 15000
-          if (quizAnswers['3'] === 'identity') price = 22000
-          else if (quizAnswers['3'] === 'social') price = 27000
-          else if (quizAnswers['3'] === 'brandbook') price = 39000
-          if (quizAnswers['4'] === 'urgent') price = Math.round(price * 1.5)
-          if (quizAnswers['1'] === 'medium') price = Math.round(price * 1.2)
-          document.getElementById('quizResult').textContent = price.toLocaleString('ru') + ' ₽'
-          if (typeof ym !== 'undefined') ym(99999999, 'reachGoal', 'quiz_complete')
-        }
-      }
-    }, 400)
-  })
-})
-
 // Form submit → Telegram
 // Brief modal
 function openBrief() {
