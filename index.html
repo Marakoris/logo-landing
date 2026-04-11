@@ -595,8 +595,8 @@ footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding
     <div style="text-align:center">
       <button onclick="openBrief()" class="btn btn-primary" style="font-size:1.1rem;padding:18px 36px">📝 Заполнить бриф</button>
       <p style="color:var(--text-muted);font-size:0.9rem;margin-top:16px">
-        или написать напрямую: <a onclick="ym(108496730,'reachGoal','telegram_click')" href="https://t.me/brandee_studio_bot" style="color:var(--primary-light)">@brandee_studio_bot</a>
-        · <a href="mailto:hi@brandee.ru" style="color:var(--primary-light)">hi@brandee.ru</a>
+        или написать напрямую: <a onclick="ym(108496730,'reachGoal','telegram_click');if(typeof gtag!=='undefined')gtag('event','telegram_click',{event_category:'conversion',event_label:'telegram'})" href="https://t.me/brandee_studio_bot" style="color:var(--primary-light)">@brandee_studio_bot</a>
+        · <a onclick="ym(108496730,'reachGoal','email_click');if(typeof gtag!=='undefined')gtag('event','email_click',{event_category:'conversion',event_label:'email'})" href="mailto:hi@brandee.ru" style="color:var(--primary-light)">hi@brandee.ru</a>
       </p>
     </div>
   </div>
@@ -711,6 +711,7 @@ function openBrief() {
   document.body.style.overflow = 'hidden'
   briefShow(0)
   if (typeof ym !== 'undefined') ym(108496730, 'reachGoal', 'brief_open')
+  if (typeof gtag !== 'undefined') gtag('event', 'brief_open', {event_category: 'engagement', event_label: 'brief_modal'})
 }
 function closeBrief() {
   document.getElementById('briefModal').classList.remove('open')
@@ -790,6 +791,7 @@ async function submitForm(e) {
     if (!id) throw new Error('no id')
     status.innerHTML = '<span style="color:#10b981">✓ Открываем Telegram...</span>'
     if (typeof ym !== 'undefined') ym(108496730, 'reachGoal', 'brief_submit')
+    if (typeof gtag !== 'undefined') gtag('event', 'brief_submit', {event_category: 'conversion', event_label: 'brief_completed'})
     setTimeout(() => {
       window.location.href = `https://t.me/brandee_studio_bot?start=${id}`
     }, 600)
