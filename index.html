@@ -697,6 +697,17 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') })
 }, { threshold: 0.1 })
 document.querySelectorAll('.animate').forEach(el => observer.observe(el))
+
+// Захватываем Metrika ClientID заранее при загрузке страницы
+let _ymClientId = ''
+function _fetchYmClientId() {
+  if (typeof ym !== 'undefined') {
+    ym(108496730, 'getClientID', function(id) { if (id) _ymClientId = id })
+  }
+}
+// Пробуем сразу и через 2 секунды (на случай если Метрика ещё грузится)
+_fetchYmClientId()
+setTimeout(_fetchYmClientId, 2000)
 // Fallback: force-show everything after 3s in case observer misfires
 setTimeout(() => document.querySelectorAll('.animate').forEach(el => el.classList.add('visible')), 3000)
 
@@ -774,18 +785,8 @@ async function submitForm(e) {
     plan: data.get('plan') || '',
   }
 
-  // Захватываем Яндекс Метрика ClientID для офлайн-конверсии
-  await new Promise(resolve => {
-    if (typeof ym !== 'undefined') {
-      ym(108496730, 'getClientID', function(clientID) {
-        if (clientID) payload.ym_client_id = clientID
-        resolve()
-      })
-      setTimeout(resolve, 500) // fallback если ym не ответит
-    } else {
-      resolve()
-    }
-  })
+  // Добавляем Metrika ClientID (захвачен при загрузке страницы)
+  if (_ymClientId) payload.ym_client_id = _ymClientId
 
   const status = document.getElementById('formStatus')
   status.innerHTML = '<span style="color:#a0a0b8">Сохраняем бриф...</span>'
