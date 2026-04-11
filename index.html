@@ -773,6 +773,20 @@ async function submitForm(e) {
     brief_extra: data.get('brief_extra') || '',
     plan: data.get('plan') || '',
   }
+
+  // Захватываем Яндекс Метрика ClientID для офлайн-конверсии
+  await new Promise(resolve => {
+    if (typeof ym !== 'undefined') {
+      ym(108496730, 'getClientID', function(clientID) {
+        if (clientID) payload.ym_client_id = clientID
+        resolve()
+      })
+      setTimeout(resolve, 500) // fallback если ym не ответит
+    } else {
+      resolve()
+    }
+  })
+
   const status = document.getElementById('formStatus')
   status.innerHTML = '<span style="color:#a0a0b8">Сохраняем бриф...</span>'
 
