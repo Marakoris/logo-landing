@@ -12,23 +12,29 @@
 <meta property="og:url" content="https://brandee.ru/blog/logotip-dlja-dostavki-edy/">
 <meta property="og:title" content="Логотип Для Доставки Еды | Brandee">
 <meta property="og:description" content="В мире, где потребители ежедневно сталкиваются с сотнями брендов, отличиться бывает непросто. Качественный фирменный знак выступает в роли безмолвного продавца,">
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-   ym(108496730, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/108496730" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8BQV29KWNJ"></script>
+<!-- Analytics deferred until user interaction -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8BQV29KWNJ');
+(function(){
+  var loaded=false;
+  function init(){
+    if(loaded)return;loaded=true;
+    var gs=document.createElement('script');gs.async=true;
+    gs.src='https://www.googletagmanager.com/gtag/js?id=G-8BQV29KWNJ';
+    document.head.appendChild(gs);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag=gtag;gtag('js',new Date());gtag('config','G-8BQV29KWNJ');
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r)return;}
+    k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
+    (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+    ym(108496730,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+  }
+  ['mousemove','scroll','keydown','touchstart','click'].forEach(function(e){
+    document.addEventListener(e,init,{once:true,passive:true});
+  });
+  setTimeout(init,30000);
+})();
 </script>
 <style>
 :root{--accent:#7C3AED;--accent2:#5B21B6;--bg:#0F0F1A;--bg2:#16162A;--white:#fff;--gray:#9CA3AF;--text:#E5E7EB}
